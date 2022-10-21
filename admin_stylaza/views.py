@@ -128,7 +128,6 @@ def admin_home(request):
             "Waiting for return",
         ]
         data1 = [New, Returned, Cancelled, Completed, Shipped, Delivered, waiting]
-        print(data1)
         order_count = Order.objects.count()
         product_count = Product.objects.count()
 

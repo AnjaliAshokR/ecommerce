@@ -125,7 +125,7 @@ def otp_check(request):
                     cart_id=_cart_id(request)
                 )  # this query will get or create a new cart
                 if cart is not None:
-                    print("cart is not empty ", cart)
+                    pass
                 is_cart_item_exist = CartItem.objects.filter(cart=cart).exists()
                 if is_cart_item_exist:
                     cart_item = CartItem.objects.filter(cart=cart)
@@ -174,7 +174,7 @@ def login(request):
 
                 cart = Cart.objects.get(cart_id=_cart_id(request))
                 if cart is not None:
-                    print("cart is not empty ", cart)
+                    pass
                 is_cart_item_exist = CartItem.objects.filter(cart=cart).exists()
                 if is_cart_item_exist:
 
@@ -868,11 +868,7 @@ def change_password(request):
 def add_wishlist(request, product_id):
     current_user = request.user
     product = Product.objects.get(id=product_id)
-    print("first")
-    print(product)
     w_list = Wishlist.objects.filter(product=product, user=current_user)
-    print("second")
-    print(w_list)
     if w_list:
         wish_list = Wishlist.objects.filter(user=request.user).order_by("-id")
         messages.info(request, "Product is already in the wishlist")
