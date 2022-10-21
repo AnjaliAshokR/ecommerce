@@ -1,0 +1,94 @@
+{% extends "admin/admin_base.html" %}
+
+{% block content %}
+  <nav  class=" navbar navbar-light navbar-fixed-top " style="background-color:#E6E6E3; height:7rem; z-index:-1;  position-relative">
+    <span class=" l-50 " style="font-size:45px; color:black; position:absolute; left:43%;">STYLAZA</span>
+</nav>
+<div class=" content-header sty-one d-flex justify-content-around ">
+    {% if messages %}
+        <div class="messages  ">
+            {% for message in messages %}
+            <div {% if message.tags %} class="text-light text-center bg-{{ message.tags }} message.tags ='error' pl-3 pr-3 " {% endif %} role="alert" >
+                 <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		            	{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error: {% else %} {{message.tags}}! {% endif %}
+				{{message}}
+            </div>
+            {% endfor %}
+        </div>
+    {% endif %}
+</div>
+<!-- Content Header (Page header) -->
+<div class="  ml-5"><h2 class="text-dark font-weight-bold" style="color:black;">PRODUCT OFFERS</h2></div>
+<br>
+<div class="content-header sty-one d-flex  justify-content-between mx-5  ">
+
+<div class="pull-right ">
+    <button class="btn btn-dark" style="background-color:black;"><a href="{% url 'brand-offer'%}" class="text-white">Brand Offer</a></button>
+     <button class="btn btn-dark" style="background-color:black;"><a href="{% url 'product-offer'%}" class="text-white">ProductOffer</a></button>
+     <button class="btn btn-dark" style="background-color:black;"><a href="{% url 'category-offer'%}" class="text-white">Category Offer</a></button>
+</div>
+    <div class=""><a href="{% url 'add-product-offer'%}">
+        <button type="submit" style="background-color:black;" class="btn btn-dark">Add Product Offer</button>
+    </a></div>
+</div>
+
+<br>
+{% if offers %}
+<div class="table-responsive d-flex justify-content-center">
+    <table class="table table-hover m-3 shadow-lg p-3 mb-5 bg-white rounded  mr-4 w-75">
+        <thead>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col" class="">Product Name</th>
+            <th scope="col">Discount</th>
+            <th scope="col">Status</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Status Change</th>
+            <th scope="col">Delete</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for offer in offers %}
+        <tr>
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{offer.product_name}}</td>
+            <td>{{offer.discount}}%</td>
+            {% if offer.is_valid %}
+            <td>Active</td>
+            {% else %}
+            <td>Not Active</td>
+            {% endif %}
+            <td><a href="{%  url 'edit-product-offer' offer.id %}">
+                <button type="submit" style="background-color:black;" class="btn btn-dark">Edit</button>
+            </a></td>
+            {% if offer.is_valid %}
+            <td><a href="{%  url 'block-product-offer' offer.id %}">
+                <button type="submit" style="background-color:black;" onclick="return confirm('Are you sure you want to block the product offer?')" class="btn btn-dark">Block</button>
+            </a></td>
+            {% else %}
+            <td><a href="{%  url 'unblock-product-offer' offer.id %}">
+                <button type="submit" style="background-color:black;" onclick="return confirm('Are you sure you want to unblock the product offer?')" class="btn btn-dark">Unblock</button>
+            </a></td>
+            {% endif %}
+            <td><a href="{%  url 'delete-product-offer' offer.id %}">
+                <button type="submit" style="background-color:black;" onclick="return confirm('Are you sure you want to delete the product offer?')" class="btn btn-dark">Delete</button>
+            </a></td>
+
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% else %}
+<div class="container">
+    <div class="position-relative">
+        <h2 class="text-center py-5">Product offers are empty.</h2>
+        <h6 class="text-center"><a  href="{% url 'admin-home'%}" class=" btn btn-dark w-18  ">Return to Dashboard</a></h6>
+    </div>
+</div>
+{% endif %}
+
+<!-- /.content -->
+{% endblock content %}

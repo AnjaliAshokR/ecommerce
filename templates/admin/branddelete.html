@@ -1,0 +1,25 @@
+{% extends "admin/admin_base.html" %}
+{% block content %}
+<nav  class=" navbar navbar-light navbar-fixed-top text-center" style="background-color:#E6E6E3; z-index:-1; height:7rem;">
+    <span style="font-size:50px; color:black; padding-left:525px;">STYLAZA</span>
+</nav>
+<section>
+  <div class="mt-4 mb-4"">
+    <div class="container h-100">
+      <div class="row justify-content-center align-items-center h-100">
+        <div class="col-12 col-md-9 col-lg-7 col-xl-4">
+          <div class="card text-dark " style="border-radius: 1rem; background-color:# " >
+            <div class="card-body p-5 ">
+                <form  method="POST">
+                    {% csrf_token %}
+                    <p> Are you sure you want to delete the brand <b>{{x.brand_name}} </b> ?</p>
+                    <button  class="btn btn-danger  btn-lg gradient-custom-7 ml-5 mr-0 text-light" style=" color:white" type="submit">Confirm</button>
+                </form>
+                 </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+{% endblock %}

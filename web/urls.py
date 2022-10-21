@@ -1,0 +1,47 @@
+from django.urls import path
+from . import views
+
+
+urlpatterns = [
+    path("", views.home, name="home"),
+    path("sign-up/", views.register, name="register"),
+    path("confirm/", views.confirm_signup, name="confirm"),
+    path("otp-sign-in/", views.sign_in, name="otp_user_login"),
+    path("otp-check/", views.otp_check, name="otp_check"),
+    path("resent-otp/", views.resent_otp, name="resent_otp"),
+    path("logout/", views.logout, name="logout"),
+    path("about/", views.about, name="about"),
+    path("contact/", views.contact, name="contact"),
+    path("shop/", views.shop, name="shop"),
+    path("login/", views.login, name="login"),
+    path("shop/<slug:category_slug>/", views.shop, name="products_by_category"),
+    path(
+        "shop/<slug:category_slug>/<slug:product_slug>/",
+        views.product_detail,
+        name="product_detail",
+    ),
+    path("brand/<slug:brand_slug>/", views.shop, name="products_by_brand"),
+    path("checkout/", views.checkout, name="checkout"),
+    path("place_order/", views.place_order, name="place_order"),
+    path("cod/", views.payment_cod, name="payment_cod"),
+    path("payment/", views.payments, name="payments"),
+    path("order-complete-cod/", views.order_complete_cod, name="order_complete_cod"),
+    path("order-complete/", views.order_complete, name="order_complete"),
+    path("user-dashboard/", views.dashboard, name="dashboard"),
+    path("my-orders/", views.my_orders, name="my-orders"),
+    path("order-detail/<int:order_id>/", views.order_detail, name="order-detail"),
+    path("order-cancel/<int:order_id>/", views.order_cancel, name="order-cancel"),
+    path("order-return/<int:order_id>/", views.order_return, name="order-return"),
+    path("cancel-return/<int:order_id>/", views.cancel_return, name="cancel-return"),
+    path("search", views.search, name="search"),
+    path("edit-profile/", views.edit_profile, name="edit-profile"),
+    path("profile-details/", views.profile_details, name="profile-details"),
+    path("change-password/", views.change_password, name="change-password"),
+    path("wishlist", views.my_wishlist, name="wishlist"),
+    path("add-wishlist/<int:product_id>/", views.add_wishlist, name="add-wishlist"),
+    path(
+        "remove-wishlist/<int:product_id>/<int:wishlist_id>/",
+        views.remove_wish_list,
+        name="remove-wishlist",
+    ),
+]

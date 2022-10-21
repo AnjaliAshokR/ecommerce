@@ -1,0 +1,89 @@
+{% extends "admin/admin_base.html" %}
+{% load static %}
+{% load mathfilters %}
+{% block content %}
+<nav  class=" navbar navbar-light navbar-fixed-top " style="background-color:#E6E6E3; height:7rem; z-index:-1;  position-relative">
+    <span class=" l-50 " style="font-size:45px; color:black; position:absolute; left:43%;">STYLAZA</span>
+</nav>
+<!-- Content Header (Page header) -->
+<div class="  ml-5"><h2 class="text-dark font-weight-bold">Sales Report</h2></div>
+
+<br>
+
+
+<div class="table-responsive d-flex justify-content-center">
+    <table class="table table-bordered table-hover m-3 shadow-lg p-3 mb-5 bg-white rounded  mr-4 w-75" >
+        <thead>
+        <tr style="font-size:20px; font-weight:bold;">
+            <td class="text-center"  colspan="9"><img src="{% static 'admin/images/logo.jpg' %}" width="50px" height="50px">&nbsp;&nbsp;STYLAZA SALES REPORT</td>
+
+        </tr>
+        <tr class="text-center">
+
+            <th scope="col">Id</th>
+            <th scope="col">Product</th>
+            <th scope="col">Brand</th>
+            <th scope="col">Category</th>
+            <th scope="col">Stock</th>
+            <th scope="col">Price</th>
+            <th scope="col">Sales Count</th>
+            <th scope="col">Revenue</th>
+            <th scope="col">Profit</th>
+
+
+        </tr>
+        </thead>
+        <tbody>
+        {% for x in product %}
+        <tr class="text-center">
+
+            <th scope="row">{{forloop.counter}}</th>
+            <td>{{x.product_name}}</td>
+            <td>{{x.brand}}</td>
+            <td>{{x.category}}</td>
+            <td>{{x.stock}}</td>
+            <td>{{x.price}}</td>
+
+            <td>
+                                    {% if x.get_count %}
+                                    {{x.get_count.0.quantity}}
+                                    {%else%}
+                                        0
+                                    {% endif %}
+                                </td>
+
+             <td>
+                                {% if x.get_revenue %}
+                                 {{x.get_revenue.0.revenue|floatformat:2}}
+                                    {%else%}
+                                        0
+                                {% endif %}
+                                </td>
+            <td>
+                                    {% if x.get_revenue  %}
+                                    {{x.get_revenue.0.revenue | mul:.10|floatformat:2 }}
+                                    {%else%}
+                                        0
+                                    {% endif %}
+
+                                </td>
+
+
+
+        </tr>
+        {% endfor %}
+
+        </tbody>
+
+
+    </table>
+
+</div>
+<div class="d-flex justify-content-center">
+<div class="btn btn-dark mb-2 mx-2 "> <a href="{% url 'sales-export-pdf'%}" class="text-white">PDF</a></div>
+<div class="btn btn-dark mb-2 "> <a href="{% url 'sales-export-csv' %}" class="text-white">EXCEL</a></div>
+
+</div>
+
+<!-- /.content -->
+{% endblock content %}

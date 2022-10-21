@@ -1,0 +1,795 @@
+{% load static %}
+{% load mathfilters %}
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>Aviato | E-commerce template</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Construction Html5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Constra HTML Template v1.0">
+  
+  <!-- Favicon -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'stylaza/images/favicon.png' %}" />
+  
+  <!-- Themefisher Icon font -->
+  <link rel="stylesheet" href="{% static 'stylaza/plugins/themefisher-font/style.css' %}">
+  <!-- bootstrap.min css -->
+  <link rel="stylesheet" href="{% static 'stylaza/plugins/bootstrap/css/bootstrap.min.css' %}">
+  
+  <!-- Animate css -->
+  <link rel="stylesheet" href="{% static 'stylaza/plugins/animate/animate.css' %}">
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="{% static 'stylaza/plugins/slick/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'stylaza/plugins/slick/slick-theme.css' %}">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="{% static 'stylaza/css/style.css' %}">
+	    <script>
+		function imageZoom(imgID, resultID) {
+		  var img, lens, result, cx, cy;
+		  img = document.getElementById(imgID);
+		  result = document.getElementById(resultID);
+		  /* Create lens: */
+		  lens = document.createElement("DIV");
+		  lens.setAttribute("class", "img-zoom-lens");
+		  /* Insert lens: */
+		  img.parentElement.insertBefore(lens, img);
+		  /* Calculate the ratio between result DIV and lens: */
+		  cx = result.offsetWidth / lens.offsetWidth;
+		  cy = result.offsetHeight / lens.offsetHeight;
+		  /* Set background properties for the result DIV */
+		  result.style.backgroundImage = "url('" + img.src + "')";
+		  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+		  /* Execute a function when someone moves the cursor over the image, or the lens: */
+		  lens.addEventListener("mousemove", moveLens);
+		  img.addEventListener("mousemove", moveLens);
+		  /* And also for touch screens: */
+		  lens.addEventListener("touchmove", moveLens);
+		  img.addEventListener("touchmove", moveLens);
+		  function moveLens(e) {
+			var pos, x, y;
+			/* Prevent any other actions that may occur when moving over the image */
+			e.preventDefault();
+			/* Get the cursor's x and y positions: */
+			pos = getCursorPos(e);
+			/* Calculate the position of the lens: */
+			x = pos.x - (lens.offsetWidth / 2);
+			y = pos.y - (lens.offsetHeight / 2);
+			/* Prevent the lens from being positioned outside the image: */
+			if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+			if (x < 0) {x = 0;}
+			if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+			if (y < 0) {y = 0;}
+			/* Set the position of the lens: */
+			lens.style.left = x + "px";
+			lens.style.top = y + "px";
+			/* Display what the lens "sees": */
+			result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+		  }
+		  function getCursorPos(e) {
+			var a, x = 0, y = 0;
+			e = e || window.event;
+			/* Get the x and y positions of the image: */
+			a = img.getBoundingClientRect();
+			/* Calculate the cursor's x and y coordinates, relative to the image: */
+			x = e.pageX - a.left;
+			y = e.pageY - a.top;
+			/* Consider any page scrolling: */
+			x = x - window.pageXOffset;
+			y = y - window.pageYOffset;
+			return {x : x, y : y};
+		  }
+		}
+		function imagZoom(imgID, resultID) {
+		  var img, lens, result, cx, cy;
+		  img = document.getElementById(imgID);
+		  result = document.getElementById(resultID);
+		  /* Create lens: */
+		  lens = document.createElement("DIV");
+		  lens.setAttribute("class", "img-zoom-lens");
+		  /* Insert lens: */
+		  img.parentElement.insertBefore(lens, img);
+		  /* Calculate the ratio between result DIV and lens: */
+		  cx = result.offsetWidth / lens.offsetWidth;
+		  cy = result.offsetHeight / lens.offsetHeight;
+		  /* Set background properties for the result DIV */
+		  result.style.backgroundImage = "url('" + img.src + "')";
+		  result.style.backgroundSize = (img.width * cx) + "px " + (img.height * cy) + "px";
+		  /* Execute a function when someone moves the cursor over the image, or the lens: */
+		  lens.addEventListener("mousemove", moveLens);
+		  img.addEventListener("mousemove", moveLens);
+		  /* And also for touch screens: */
+		  lens.addEventListener("touchmove", moveLens);
+		  img.addEventListener("touchmove", moveLens);
+		  function moveLens(e) {
+			var pos, x, y;
+			/* Prevent any other actions that may occur when moving over the image */
+			e.preventDefault();
+			/* Get the cursor's x and y positions: */
+			pos = getCursorPos(e);
+			/* Calculate the position of the lens: */
+			x = pos.x - (lens.offsetWidth / 2);
+			y = pos.y - (lens.offsetHeight / 2);
+			/* Prevent the lens from being positioned outside the image: */
+			if (x > img.width - lens.offsetWidth) {x = img.width - lens.offsetWidth;}
+			if (x < 0) {x = 0;}
+			if (y > img.height - lens.offsetHeight) {y = img.height - lens.offsetHeight;}
+			if (y < 0) {y = 0;}
+			/* Set the position of the lens: */
+			lens.style.left = x + "px";
+			lens.style.top = y + "px";
+			/* Display what the lens "sees": */
+			result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
+		  }
+		  function getCursorPos(e) {
+			var a, x = 0, y = 0;
+			e = e || window.event;
+			/* Get the x and y positions of the image: */
+			a = img.getBoundingClientRect();
+			/* Calculate the cursor's x and y coordinates, relative to the image: */
+			x = e.pageX - a.left;
+			y = e.pageY - a.top;
+			/* Consider any page scrolling: */
+			x = x - window.pageXOffset;
+			y = y - window.pageYOffset;
+			return {x : x, y : y};
+		  }
+		}
+	</script>
+<style>
+	* {box-sizing: border-box;}
+
+		.img-zoom-container {
+		  position: relative;
+		}
+
+		.img-zoom-lens {
+		  position: absolute;
+		  border: 1px solid #d4d4d4;
+		  /*set the size of the lens:*/
+		  width: 200px;
+		  height: 200px;
+		}
+
+		.img-zoom-result {
+		  border: 1px solid #d4d4d4;
+		  /*set the size of the result div:*/
+		  width: 300px;
+		  height: 300px;
+		}
+</style>
+</head>
+
+<body id="body">
+<!-- Start Top Header Bar -->
+<section class="top-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-xs-12 col-sm-4">
+				<div class="contact-number">
+					<i class="tf-ion-ios-telephone"></i>
+					<span>0129- 12323-123123</span>
+				</div>
+			</div>
+			<div class="col-md-4 col-xs-12 col-sm-4">
+				<!-- Site Logo -->
+				<div class="logo text-center">
+
+						<!-- replace logo here -->
+						<svg width="165px" height="29px" viewBox="0 0 190 29" version="1.1" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink">
+							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="40"
+								font-family="AustinBold, Austin" font-weight="bold">
+								<g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
+									<text id="AVIATO">
+										<tspan x="108.94" y="325">STYLAZA</tspan>
+									</text>
+								</g>
+							</g>
+						</svg>
+
+				</div>
+			</div>
+			<div class="col-md-4 col-xs-12 col-sm-4">
+				<!-- Cart -->
+				<ul class="top-menu text-right list-inline">
+					<li class="dropdown cart-nav dropdown-slide">
+						<a href="{% url 'cart' %}" class="dropdown-toggle" ><i
+								class="tf-ion-android-cart"></i>Cart</a>
+<!--						<div class="dropdown-menu cart-dropdown">-->
+							<!-- Cart Item -->
+<!--							<div class="media">-->
+<!--								<a class="pull-left" href="#!">-->
+<!--									<img class="media-object" src="{% static 'stylaza/images/shop/cart/cart-1.jpg" alt="image" />-->
+<!--								</a>-->
+<!--								<div class="media-body">-->
+<!--									<h4 class="media-heading"><a href="#!">Ladies Bag</a></h4>-->
+<!--									<div class="cart-price">-->
+<!--										<span>1 x</span>-->
+<!--										<span>1250.00</span>-->
+<!--									</div>-->
+<!--									<h5><strong>$1200</strong></h5>-->
+<!--								</div>-->
+<!--								<a href="#!" class="remove"><i class="tf-ion-close"></i></a>-->
+<!--							</div>&lt;!&ndash; / Cart Item &ndash;&gt;-->
+							<!-- Cart Item -->
+<!--							<div class="media">-->
+<!--								<a class="pull-left" href="#!">-->
+<!--									<img class="media-object" src="images/shop/cart/cart-2.jpg" alt="image" />-->
+<!--								</a>-->
+<!--								<div class="media-body">-->
+<!--									<h4 class="media-heading"><a href="#!">Ladies Bag</a></h4>-->
+<!--									<div class="cart-price">-->
+<!--										<span>1 x</span>-->
+<!--										<span>1250.00</span>-->
+<!--									</div>-->
+<!--									<h5><strong>$1200</strong></h5>-->
+<!--								</div>-->
+<!--								<a href="#!" class="remove"><i class="tf-ion-close"></i></a>-->
+<!--							</div>&lt;!&ndash; / Cart Item &ndash;&gt;-->
+
+<!--							<div class="cart-summary">-->
+<!--								<span>Total</span>-->
+<!--								<span class="total-price">$1799.00</span>-->
+<!--							</div>-->
+<!--							<ul class="text-center cart-buttons">-->
+<!--								<li><a href="cart.html" class="btn btn-small">View Cart</a></li>-->
+<!--								<li><a href="checkout.html" class="btn btn-small btn-solid-border">Checkout</a></li>-->
+<!--							</ul>-->
+<!--						</div>-->
+
+					</li><!-- / Cart -->
+
+					<!-- Search -->
+					<li class="dropdown search dropdown-slide">
+						<a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
+								class="tf-ion-ios-search-strong"></i> Search</a>
+					<ul class="dropdown-menu search-dropdown">
+							<li>
+								<form action="{% url 'search' %}" method="GET" >
+									<input  name="key" type="text" class="form-control" placeholder="Search...">
+								</form>
+							</li>
+						</ul>
+					</li><!-- / Search -->
+
+					<!-- Languages -->
+					<li class="commonSelect">
+						<select class="form-control">
+							<option>EN</option>
+							<option>DE</option>
+							<option>FR</option>
+							<option>ES</option>
+						</select>
+					</li><!-- / Languages -->
+
+				</ul><!-- / .nav .navbar-nav .navbar-right -->
+			</div>
+		</div>
+	</div>
+</section><!-- End Top Header Bar -->
+
+
+<!-- Main Menu Section -->
+<section class="menu">
+	<nav class="navbar navigation">
+		<div class="container">
+			<div class="navbar-header">
+				<h2 class="menu-title">Main Menu</h2>
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+					aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+
+			</div><!-- / .navbar-header -->
+
+			<!-- Navbar Links -->
+			<div id="navbar" class="navbar-collapse collapse text-center">
+				<ul class="nav navbar-nav">
+
+					<!-- Home -->
+					<li class="dropdown ">
+						<a href="{% url 'home' %}">Home</a>
+					</li><!-- / Home -->
+
+
+					<!-- Elements -->
+					<li class="dropdown dropdown-slide">
+						<a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
+							role="button" aria-haspopup="true" aria-expanded="false">Shop <span
+								class="tf-ion-ios-arrow-down"></span></a>
+						<div class="dropdown-menu">
+							<div class="row">
+
+								<!-- Basic -->
+								<div >
+									<ul>
+										<li class="dropdown-header">STYLAZA</li>
+										<li role="separator" class="divider"></li>
+										<li><a href="{% url 'cart' %}">Cart</a></li>
+										<li><a href="{% url 'wishlist' %}">Wishlist</a></li>
+										<li><a href="{% url 'contact' %}">Contact</a></li>
+
+
+
+									</ul>
+								</div>
+
+								<!-- Layout -->
+<!--								<div class="col-lg-6 col-md-6 mb-sm-3">-->
+<!--									<ul>-->
+<!--										<li class="dropdown-header">Layout</li>-->
+<!--										<li role="separator" class="divider"></li>-->
+<!--										<li><a href="product-single.html">Product Details</a></li>-->
+<!--										<li><a href="shop-sidebar.html">Shop With Sidebar</a></li>-->
+
+<!--									</ul>-->
+<!--								</div>-->
+
+							</div><!-- / .row -->
+						</div><!-- / .dropdown-menu -->
+					</li><!-- / Elements -->
+
+
+					<!-- Pages -->
+
+					<li class="dropdown dropdown-slide">
+						<a href="{% url 'shop' %}"  data-hover="dropdown" data-delay="350"
+							role="button" aria-haspopup="true" aria-expanded="false">Products
+<!--							<span-->
+<!--								class="tf-ion-ios-arrow-down"></span>-->
+						</a>
+<!--						<ul class="dropdown-menu">-->
+<!--							<li><a href="blog-left-sidebar.html">Blog Left Sidebar</a></li>-->
+<!--							<li><a href="blog-right-sidebar.html">Blog Right Sidebar</a></li>-->
+<!--							<li><a href="blog-full-width.html">Blog Full Width</a></li>-->
+<!--							<li><a href="blog-grid.html">Blog 2 Columns</a></li>-->
+<!--							<li><a href="blog-single.html">Blog Single</a></li>-->
+<!--						</ul>-->
+					</li><!-- / Blog -->
+					{% if user.is_authenticated %}
+					<li class="dropdown dropdown-slide">
+						<a href="{% url 'profile-details' %}"  data-hover="dropdown" aria-haspopup="true" aria-expanded="false">WELCOME <b>{{user.username}}</b>
+<!--							<span-->
+<!--								class="tf-ion-ios-arrow-down"></span>-->
+						</a>
+<!--						<ul class="dropdown-menu">-->
+<!--							<li><a href="typography.html">Typography</a></li>-->
+<!--							<li><a href="buttons.html">Buttons</a></li>-->
+<!--							<li><a href="alerts.html">Alerts</a></li>-->
+<!--						</ul>-->
+					</li><!-- / Blog -->
+					{% endif %}
+					<li class="dropdown  dropdown-slide">
+												<a href="#!" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="350"
+														role="button" aria-haspopup="true" aria-expanded="false">Account <span
+															class="tf-ion-ios-arrow-down"></span></a>
+											<div class="dropdown-menu">
+												<div class="row">
+														<ul>
+					<!--										<li class="dropdown-header">Utility</li>-->
+					<!--										<li role="separator" class="divider"></li>-->
+															<li class="dropdown-header">{% if user.is_authenticated %}
+																<a href="{% url 'profile-details' %}">My Profile <b></b></a></li>
+															<li class="dropdown-header"><a href="{% url 'dashboard' %}">Dashboard</a></li>
+															<li class="dropdown-header"><a href="{% url 'my-orders' %}">Your orders</a></li>
+															<li class="dropdown-header"><a href="{% url 'edit-profile' %}">Edit Profile</a></li>
+															<li class="dropdown-header"><a href="{% url 'change-password' %}">Change Password</a></li>
+																{% else %}
+																<a href="{% url 'login' %}">Login Page</a></li>
+																{% endif %}
+															<li class="dropdown-header">{% if user.is_authenticated %}
+																<a href="{% url 'logout' %}">Logout</a></li>
+																{% else %}
+																<a href="{% url 'register' %}">Signin Page</a></li>
+																{% endif %}
+														</ul>
+													</div>
+											</div>
+
+
+													<!-- Introduction -->
+					<!--								<div class="col-sm-3 col-xs-12">-->
+					<!--									<ul>-->
+					<!--										<li class="dropdown-header">Introduction</li>-->
+					<!--										<li role="separator" class="divider"></li>-->
+					<!--										<li><a href="contact.html">Contact Us</a></li>-->
+					<!--										<li><a href="about.html">About Us</a></li>-->
+					<!--										<li><a href="404.html">404 Page</a></li>-->
+					<!--										<li><a href="coming-soon.html">Coming Soon</a></li>-->
+					<!--										<li><a href="faq.html">FAQ</a></li>-->
+					<!--									</ul>-->
+					<!--								</div>-->
+
+													<!-- Contact -->
+					<!--								<div class="col-sm-3 col-xs-12">-->
+					<!--									<ul>-->
+					<!--										<li class="dropdown-header">Dashboard</li>-->
+					<!--										<li role="separator" class="divider"></li>-->
+					<!--										<li><a href="dashboard.html">User Interface</a></li>-->
+					<!--										<li><a href="order.html">Orders</a></li>-->
+					<!--										<li><a href="address.html">Address</a></li>-->
+					<!--										<li><a href="profile-details.html">Profile Details</a></li>-->
+					<!--									</ul>-->
+					<!--								</div>-->
+
+													<!-- Utility -->
+
+													<!-- Mega Menu -->
+					<!--								<div class="col-sm-3 col-xs-12">-->
+					<!--									<a href="payments.html">-->
+					<!--										<img class="img-responsive" src="images/shop/header-img.jpg" alt="menu image" />-->
+					<!--									</a>-->
+					<!--								</div>-->
+											<!--	</div>  / .row -->
+										<!--	</div> / .dropdown-menu -->
+									<!-- 	</li>/ Pages -->
+
+
+
+										<!-- Blog -->
+
+											</li>
+					<!-- Shop -->
+
+
+					<li class="dropdown dropdown-slide">
+						<a href="{% url 'about' %}"  data-hover="dropdown" aria-haspopup="true" aria-expanded="false">About Us
+<!--							<span-->
+<!--								class="tf-ion-ios-arrow-down"></span>-->
+						</a>
+<!--						<ul class="dropdown-menu">-->
+<!--							<li><a href="typography.html">Typography</a></li>-->
+<!--							<li><a href="buttons.html">Buttons</a></li>-->
+<!--							<li><a href="alerts.html">Alerts</a></li>-->
+<!--						</ul>-->
+					</li><!-- / Blog -->
+				</ul><!-- / .nav .navbar-nav -->
+
+			</div>
+			<!--/.navbar-collapse -->
+		</div><!-- / .container -->
+	</nav>
+</section>
+<section class="single-product">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6">
+				<ol class="breadcrumb">
+					<li><a href="index.html">Home</a></li>
+					<li><a href="shop.html">Shop</a></li>
+					<li class="active">Single Product</li>
+				</ol>
+			</div>
+
+		</div>
+		<div class="row mt-20">
+			<div class="col-md-5">
+				<div class="single-product-slider img-zoom-container">
+					<div id='carousel-custom' class='carousel slide' data-ride='carousel'>
+						<div class='carousel-outer'>
+							<!-- me art lab slider -->
+							<div class='carousel-inner '>
+								<div class='item active '>
+
+
+									<img  id="myimage" src='{{single_product.images.url}}' alt='' data-zoom-image="{{single_product.images.url}}" />
+								</div>
+								<div class='item'>
+									<img id="my_image2"  src='{{single_product.images1.url}}' alt='' data-zoom-image="{{single_product.images1.url}}" />
+								</div>
+
+								<div class='item'>
+									<img id="my_image3" src='{{single_product.images2.url}}' alt='' data-zoom-image="{{single_product.images2.url}}" />
+								</div>
+							</div>
+
+							<!-- sag sol -->
+							<a class='left carousel-control' href='#carousel-custom' data-slide='prev'>
+								<i class="tf-ion-ios-arrow-left"></i>
+							</a>
+							<a class='right carousel-control' href='#carousel-custom' data-slide='next'>
+								<i class="tf-ion-ios-arrow-right"></i>
+							</a>
+						</div>
+
+						<!-- thumb -->
+						<ol class='carousel-indicators mCustomScrollbar meartlab'>
+							<li data-target='#carousel-custom' data-slide-to='0' class='active'>
+
+								<img src='{{single_product.images.url}}' alt=''  />
+							</li>
+							<li data-target='#carousel-custom' data-slide-to='1'>
+								<img src='{{single_product.images1.url}}' alt='' />
+							</li>
+							<li data-target='#carousel-custom' data-slide-to='2'>
+								<img src='{{single_product.images2.url}}' alt='' />
+							</li>
+						</ol>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-7">
+				<form action="{% url 'add_cart' single_product.id %}" method="POST" >
+                        {% csrf_token %}
+					<div class="single-product-details">
+						<h2>{{single_product.product_name}}</h2>
+						{% if single_product.offer_price == 0 %}
+						<p class="product-price"><b>$</b>{{single_product.price}}</p>
+						{% else %}
+						<var ><span class="product-price" style="text-decoration:line-through;"><b>$</b>{{single_product.price}}</span><span class="text-danger">&nbsp;&nbsp;&nbsp;({{single_product.percentage}}%) off </span></var>
+						<p class="product-price"><b>$</b>{{single_product.offer_price|floatformat:2}}</p>
+						{% endif %}
+						<p class="product-description mt-20">
+							{{single_product.description}}
+							</p>
+						<div class="product-size">
+							<span>color:</span>
+							<select name="color" class="form-control " >
+											<option value="" disabled selected>select</option>
+											{% for i in single_product.variation_set.colors %}
+											<option value="{{ i.variation_value  | lower}}">{{ i.variation_value|lower|capfirst }}</option>
+											{% endfor %}
+
+
+										</select>
+						</div>
+						<div class="product-size">
+							<span>Size:</span>
+							<select name="size" class="form-control" >
+											<option value="" disabled selected>select</option>
+											{% for i in single_product.variation_set.sizes %}
+											<option value="{{ i.variation_value  | lower }}">{{ i.variation_value | lower | capfirst }}</option>
+											{% endfor %}
+										</select>
+						</div>
+						<div class="product-quantity">
+							{% if single_product.stock <= 0 %}
+								<h5 class="text-danger">Out of Stock</h5>
+
+							{% else %}
+							<button type="submit" class="btn btn-main mt-20">Add To Cart</button>
+
+							{% endif %}
+							&nbsp;&nbsp;&nbsp;
+							<a href="{% url 'add-wishlist' single_product.id %}" class="btn btn-main mt-20">Add To Wishlist</a>
+	<!--						<span>Quantity:</span>-->
+	<!--						<div class="product-quantity-slider">-->
+	<!--							<input id="product-quantity" type="text" value="0" name="product-quantity">-->
+	<!--						</div>-->
+						</div>
+						<div class="product-category row">
+							<span class="">Categories:</span>
+							<ul class="">
+								<li><a href="">{{single_product.brand}}</a></li>
+								<li><a href="">{{single_product.category}}</a></li>
+							</ul>
+						</div>
+					</div>
+				</form>
+			</div>
+			<div   id="myresult" class=" myresult col-sm-2 col-md-4 img-zoom-result"></div>
+		</div>
+		<div class="row">
+			<div class="col-xs-12">
+				<div class="tabCommon mt-20">
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" href="#details" aria-expanded="true">Details</a></li>
+						<li class=""><a data-toggle="tab" href="#reviews" aria-expanded="false">Reviews (3)</a></li>
+					</ul>
+					<div class="tab-content patternbg">
+						<div id="details" class="tab-pane fade active in">
+							<h4>Product Description</h4>
+							<p>{{single_product.details}}</p>
+							</div>
+						<div id="reviews" class="tab-pane fade">
+							<div class="post-comments">
+						    	<ul class="media-list comments-list m-bot-50 clearlist">
+								    <!-- Comment Item start-->
+								    <li class="media">
+
+								        <a class="pull-left" href="#!">
+								            <img class="media-object comment-avatar" src="images/blog/avater-1.jpg" alt="" width="50" height="50" />
+								        </a>
+
+								        <div class="media-body">
+								            <div class="comment-info">
+								                <h4 class="comment-author">
+								                    <a href="#!">Jonathon Andrew</a>
+								                	
+								                </h4>
+								                <time datetime="2013-04-06T13:53">July 02, 2015, at 11:34</time>
+								                <a class="comment-button" href="#!"><i class="tf-ion-chatbubbles"></i>Reply</a>
+								            </div>
+
+								            <p>
+								                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at magna ut ante eleifend eleifend.Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod laborum minima, reprehenderit laboriosam officiis praesentium? Impedit minus provident assumenda quae.
+								            </p>
+								        </div>
+
+								    </li>
+								    <!-- End Comment Item -->
+
+								    <!-- Comment Item start-->
+								    <li class="media">
+
+								        <a class="pull-left" href="#!">
+								            <img class="media-object comment-avatar" src="images/blog/avater-4.jpg" alt="" width="50" height="50" />
+								        </a>
+
+								        <div class="media-body">
+
+								            <div class="comment-info">
+								                <div class="comment-author">
+								                    <a href="#!">Jonathon Andrew</a>
+								                </div>
+								                <time datetime="2013-04-06T13:53">July 02, 2015, at 11:34</time>
+								                <a class="comment-button" href="#!"><i class="tf-ion-chatbubbles"></i>Reply</a>
+								            </div>
+
+								            <p>
+								                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at magna ut ante eleifend eleifend. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Magni natus, nostrum iste non delectus atque ab a accusantium optio, dolor!
+								            </p>
+
+								        </div>
+
+								    </li>
+								    <!-- End Comment Item -->
+
+								    <!-- Comment Item start-->
+								    <li class="media">
+
+								        <a class="pull-left" href="#!">
+								            <img class="media-object comment-avatar" src="images/blog/avater-1.jpg" alt="" width="50" height="50">
+								        </a>
+
+								        <div class="media-body">
+
+								            <div class="comment-info">
+								                <div class="comment-author">
+								                    <a href="#!">Jonathon Andrew</a>
+								                </div>
+								                <time datetime="2013-04-06T13:53">July 02, 2015, at 11:34</time>
+								                <a class="comment-button" href="#!"><i class="tf-ion-chatbubbles"></i>Reply</a>
+								            </div>
+
+								            <p>
+								                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque at magna ut ante eleifend eleifend.
+								            </p>
+
+								        </div>
+
+								    </li>
+							</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+<!-- Modal -->
+<div class="modal product-modal fade" id="product-modal">
+	<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+		<i class="tf-ion-close"></i>
+	</button>
+  	<div class="modal-dialog " role="document">
+    	<div class="modal-content">
+	      	<div class="modal-body">
+	        	<div class="row">
+	        		<div class="col-md-8">
+	        			<div class="modal-image">
+		        			<img class="img-responsive" src="images/shop/products/modal-product.jpg" />
+	        			</div>
+	        		</div>
+	        		<div class="col-md-3">
+	        			<div class="product-short-details">
+	        				<h2 class="product-title">GM Pendant, Basalt Grey</h2>
+	        				<p class="product-price">$200</p>
+	        				<p class="product-short-description">
+	        					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rem iusto nihil cum. Illo laborum numquam rem aut officia dicta cumque.
+	        				</p>
+	        				<a href="#!" class="btn btn-main">Add To Cart</a>
+	        				<a href="#!" class="btn btn-transparent">View Product Details</a>
+	        			</div>
+	        		</div>
+	        	</div>
+	        </div>
+    	</div>
+  	</div>
+</div>
+<footer class="footer section text-center">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="social-media">
+					<li>
+						<a href="https://www.facebook.com/">
+							<i class="tf-ion-social-facebook"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.instagram.com/">
+							<i class="tf-ion-social-instagram"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.twitter.com/">
+							<i class="tf-ion-social-twitter"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.pinterest.com/">
+							<i class="tf-ion-social-pinterest"></i>
+						</a>
+					</li>
+				</ul>
+				<ul class="footer-menu text-uppercase">
+					<li>
+						<a href="{% url 'contact' %}">CONTACT</a>
+					</li>
+					<li>
+						<a href="{% url 'home' %}">SHOP</a>
+					</li>
+					<li>
+						<a href="">PRICING</a>
+					</li>
+					<li>
+						<a href="">PRIVACY POLICY</a>
+					</li>
+				</ul>
+				<p class="copyright-text">Copyright &copy;2022, Designed &amp; Developed by <b style="color:black;">STYLAZA</b></p>
+			</div>
+		</div>
+	</div>
+</footer>
+    <!-- 
+    Essential Scripts
+    =====================================-->
+    
+    <!-- Main jQuery -->
+    <script src="{% static 'stylaza/plugins/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap 3.1 -->
+    <script src="{% static 'stylaza/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- Bootstrap Touchpin -->
+    <script src="{% static 'stylaza/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js' %}"></script>
+    <!-- Instagram Feed Js -->
+    <script src="{% static 'stylaza/plugins/instafeed/instafeed.min.js' %}"></script>
+    <!-- Video Lightbox Plugin -->
+    <script src="{% static 'stylaza/plugins/ekko-lightbox/dist/ekko-lightbox.min.js' %}"></script>
+    <!-- Count Down Js -->
+    <script src="{% static 'stylaza/plugins/syo-timer/build/jquery.syotimer.min.js' %}"></script>
+
+    <!-- slick Carousel -->
+    <script src="{% static 'stylaza/plugins/slick/slick.min.js' %}"></script>
+    <script src="{% static 'stylaza/plugins/slick/slick-animation.min.js' %}"></script>
+
+    <!-- Google Mapl -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+    <script type="text/javascript" src="{% static 'stylaza/plugins/google-map/gmap.js' %}"></script>
+
+    <!-- Main Js File -->
+    <script src="{% static 'stylaza/js/script.js' %}"></script>
+	<script>
+	// Initiate zoom effect:
+	imageZoom("myimage", "myresult");
+	imageZoom("myimage2", "myresult2");
+	imageZoom("myimage3", "myresult3");
+	</script>
+  </body>
+  </html>

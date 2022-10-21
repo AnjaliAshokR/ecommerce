@@ -1,0 +1,282 @@
+{% load static %}
+<!DOCTYPE html>
+
+
+<html lang="en">
+<head>
+
+  <!-- Basic Page Needs
+  ================================================== -->
+  <meta charset="utf-8">
+  <title>Stylaza</title>
+
+  <!-- Mobile Specific Metas
+  ================================================== -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="description" content="Construction Html5 Template">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <meta name="author" content="Themefisher">
+  <meta name="generator" content="Themefisher Constra HTML Template v1.0">
+
+  <!-- Favicon -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+  <link rel="shortcut icon" type="image/x-icon" href="{% static 'stylaza/images/new.png' %}" />
+
+  <!-- Themefisher Icon font -->
+  <link rel="stylesheet" href="{% static 'stylaza/plugins/themefisher-font/style.css' %}">
+  <!-- bootstrap.min css -->
+  <link rel="stylesheet" href="{% static 'stylaza/plugins/bootstrap/css/bootstrap.min.css' %}">
+
+  <!-- Animate css -->
+  <link rel="stylesheet" href="{% static 'stylaza/plugins/animate/animate.css' %}">
+  <!-- Slick Carousel -->
+  <link rel="stylesheet" href="{% static 'stylaza/plugins/slick/slick.css' %}">
+  <link rel="stylesheet" href="{% static 'stylaza/plugins/slick/slick-theme.css' %}">
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="{% static 'stylaza/css/style.css' %}">
+
+</head>
+
+<body id="body">
+<!-- Start Top Header Bar -->
+<section class="top-header">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4 col-xs-12 col-sm-4">
+				<div class="contact-number">
+					<i class="tf-ion-ios-telephone"></i>
+					<span>0129- 12323-123123</span>
+				</div>
+			</div>
+			<div class="col-md-4 col-xs-12 col-sm-4">
+				<!-- Site Logo -->
+				<div class="logo text-center">
+
+						<!-- replace logo here -->
+						<svg width="165px" height="29px" viewBox="0 0 190 29" version="1.1" xmlns="http://www.w3.org/2000/svg"
+							xmlns:xlink="http://www.w3.org/1999/xlink">
+							<g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" font-size="40"
+								font-family="AustinBold, Austin" font-weight="bold">
+								<g id="Group" transform="translate(-108.000000, -297.000000)" fill="#000000">
+									<text id="AVIATO">
+										<tspan x="108.94" y="325">STYLAZA</tspan>
+									</text>
+								</g>
+							</g>
+						</svg>
+
+				</div>
+			</div>
+			<div class="col-md-4 col-xs-12 col-sm-4">
+				<!-- Cart -->
+				<ul class="top-menu text-right list-inline">
+					<li class="dropdown cart-nav dropdown-slide">
+						<a href="{% url 'cart' %}" class="dropdown-toggle" ><i
+								class="tf-ion-android-cart"></i>Cart</a>
+<!--						<div class="dropdown-menu cart-dropdown">-->
+							<!-- Cart Item -->
+<!--							<div class="media">-->
+<!--								<a class="pull-left" href="#!">-->
+<!--									<img class="media-object" src="{% static 'stylaza/images/shop/cart/cart-1.jpg" alt="image" />-->
+<!--								</a>-->
+<!--								<div class="media-body">-->
+<!--									<h4 class="media-heading"><a href="#!">Ladies Bag</a></h4>-->
+<!--									<div class="cart-price">-->
+<!--										<span>1 x</span>-->
+<!--										<span>1250.00</span>-->
+<!--									</div>-->
+<!--									<h5><strong>$1200</strong></h5>-->
+<!--								</div>-->
+<!--								<a href="#!" class="remove"><i class="tf-ion-close"></i></a>-->
+<!--							</div>&lt;!&ndash; / Cart Item &ndash;&gt;-->
+							<!-- Cart Item -->
+<!--							<div class="media">-->
+<!--								<a class="pull-left" href="#!">-->
+<!--									<img class="media-object" src="images/shop/cart/cart-2.jpg" alt="image" />-->
+<!--								</a>-->
+<!--								<div class="media-body">-->
+<!--									<h4 class="media-heading"><a href="#!">Ladies Bag</a></h4>-->
+<!--									<div class="cart-price">-->
+<!--										<span>1 x</span>-->
+<!--										<span>1250.00</span>-->
+<!--									</div>-->
+<!--									<h5><strong>$1200</strong></h5>-->
+<!--								</div>-->
+<!--								<a href="#!" class="remove"><i class="tf-ion-close"></i></a>-->
+<!--							</div>&lt;!&ndash; / Cart Item &ndash;&gt;-->
+
+<!--							<div class="cart-summary">-->
+<!--								<span>Total</span>-->
+<!--								<span class="total-price">$1799.00</span>-->
+<!--							</div>-->
+<!--							<ul class="text-center cart-buttons">-->
+<!--								<li><a href="cart.html" class="btn btn-small">View Cart</a></li>-->
+<!--								<li><a href="checkout.html" class="btn btn-small btn-solid-border">Checkout</a></li>-->
+<!--							</ul>-->
+<!--						</div>-->
+
+					</li><!-- / Cart -->
+
+					<!-- Search -->
+					<li class="dropdown search dropdown-slide">
+						<a class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown"><i
+								class="tf-ion-ios-search-strong"></i> Search</a>
+					<ul class="dropdown-menu search-dropdown">
+							<li>
+								<form action="{% url 'search' %}" method="GET" >
+									<input  name="key" type="text" class="form-control" placeholder="Search...">
+								</form>
+							</li>
+						</ul>
+					</li><!-- / Search -->
+
+					<!-- Languages -->
+					<li class="commonSelect">
+						<select class="form-control">
+							<option>EN</option>
+							<option>DE</option>
+							<option>FR</option>
+							<option>ES</option>
+						</select>
+					</li><!-- / Languages -->
+
+				</ul><!-- / .nav .navbar-nav .navbar-right -->
+			</div>
+		</div>
+	</div>
+</section><!-- End Top Header Bar -->
+
+
+
+<section class="forget-password-page account">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="block text-center">
+			{% if messages %}
+			{% for message in messages %}
+			<div {% if message.tags %} class="alert alert-{{ message.tags }} message.tags ='error' alert-common alert-dismissible" {% endif %} role="alert">
+		            	<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+		            	{% if message.level == DEFAULT_MESSAGE_LEVELS.ERROR %}Error: {% else %} {{message.tags}}! {% endif %}
+				{{message}}
+			</div>
+			{% endfor %}
+		 	{% endif %}
+          <h2 class="text-center">Log in with otp</h2>
+          <form action="#" class="text-left clearfix" method="post" id="otpsign">
+              {%csrf_token %}
+            <p>Please enter the mobile number</p>
+            <div class="form-group">
+              <input type="number" class="form-control"  placeholder="Enter mobile number" name="phone_number"   pattern="^(?:(?:\+|0{0,2})91(\s*[\-]\s*)?|[0]?)?[789]\d{9}$">
+            </div>
+            <div class="text-center">
+              <button type="submit" class="btn btn-main text-center">Get Otp</button>
+            </div>
+          </form>
+          <p class="mt-20"><a href="{% url 'login' %}">Back to log in</a></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer section text-center">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-12">
+				<ul class="social-media">
+					<li>
+						<a href="https://www.facebook.com/">
+							<i class="tf-ion-social-facebook"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.instagram.com/">
+							<i class="tf-ion-social-instagram"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.twitter.com/">
+							<i class="tf-ion-social-twitter"></i>
+						</a>
+					</li>
+					<li>
+						<a href="https://www.pinterest.com/">
+							<i class="tf-ion-social-pinterest"></i>
+						</a>
+					</li>
+				</ul>
+				<ul class="footer-menu text-uppercase">
+					<li>
+						<a href="{% url 'contact' %}">CONTACT</a>
+					</li>
+					<li>
+						<a href="{% url 'home' %}">SHOP</a>
+					</li>
+					<li>
+						<a href="">PRICING</a>
+					</li>
+					<li>
+						<a href="">PRIVACY POLICY</a>
+					</li>
+				</ul>
+				<p class="copyright-text">Copyright &copy;2022, Designed &amp; Developed by <b style="color:black;">STYLAZA</b></p>
+			</div>
+		</div>
+	</div>
+</footer>
+
+    <!-- 
+    Essential Scripts
+    =====================================-->
+    <script>
+          $(document).ready(function() {
+            console.log('gooooooood')
+          $("#otpsign").validate({
+            rules:{
+              phone:{
+                required:true,
+                number:true,
+                minlength:10,
+                maxlength:10,
+              }
+            },
+            messages:{
+              phone:{
+                minlength:"The Minimum Number of Characters should be 10",
+                maxlength:"The Maximum Number of Characters should be 10",
+              },
+            }
+          })
+        });
+    </script>
+    <!-- Main jQuery -->
+    <script src="{% static 'stylaza/plugins/jquery/dist/jquery.min.js' %}"></script>
+    <!-- Bootstrap 3.1 -->
+    <script src="{% static 'stylaza/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <!-- Bootstrap Touchpin -->
+    <script src="{% static 'stylaza/plugins/bootstrap-touchspin/dist/jquery.bootstrap-touchspin.min.js' %}"></script>
+    <!-- Instagram Feed Js -->
+    <script src="{% static 'stylaza/plugins/instafeed/instafeed.min.js' %}"></script>
+    <!-- Video Lightbox Plugin -->
+    <script src="{% static 'stylaza/plugins/ekko-lightbox/dist/ekko-lightbox.min.js' %}"></script>
+    <!-- Count Down Js -->
+    <script src="{% static 'stylaza/plugins/syo-timer/build/jquery.syotimer.min.js' %}"></script>
+
+    <!-- slick Carousel -->
+    <script src="{% static 'stylaza/plugins/slick/slick.min.js' %}"></script>
+    <script src="{% static 'stylaza/plugins/slick/slick-animation.min.js' %}"></script>
+
+    <!-- Google Mapl -->
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCC72vZw-6tGqFyRhhg5CkF2fqfILn2Tsw"></script>
+    <script type="text/javascript" src="{% static 'stylaza/plugins/google-map/gmap.js' %}"></script>
+
+    <!-- Main Js File -->
+    <script src="{% static 'stylaza/js/script.js' %}"></script>
+
+    
+
+
+  </body>
+  </html>

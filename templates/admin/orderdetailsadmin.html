@@ -1,0 +1,71 @@
+{% extends "admin/admin_base.html" %}
+
+{% block content %}
+ <nav  class=" navbar navbar-light navbar-fixed-top " style="background-color:#E6E6E3; height:7rem; z-index:-1;  position-relative">
+    <span class=" l-50 " style="font-size:45px; color:black; position:absolute; left:43%;">STYLAZA</span>
+</nav>
+
+        <!-- partial -->
+        <div class="main-panel">
+          <div class="content-wrapper">
+            <div class="page-header">
+              <!-- <h3 class="page-title"> Basic Tables </h3> -->
+              <!-- <nav aria-label="breadcrumb">
+                <ol class="breadcrumb"> -->
+                  <!-- <li class="breadcrumb-item"><a href="#">Tables</a></li> -->
+                  <!-- <li class="breadcrumb-item active" aria-current="page">Basic tables</li> -->
+                <!-- </ol> -->
+              </nav>
+            </div>
+
+
+
+              <div class="col-lg-12 grid-margin stretch-card">
+                <div class="card">
+                  <div class="card-body">
+                    <!-- <h4 class="card-title">Striped Table</h4> -->
+                    <!-- <p class="card-description"> Add class <code>.table-striped</code> -->
+                    </p>
+                    <table class="table table-striped">
+                      <thead>
+                        <tr>
+                            <th>Item</th>
+                          <th> Order </th>
+                          <th> Product name  </th>
+                          <th> Quantity </th>
+                          <th> Price  </th>
+                          <th> created </th>
+                          <th> Order Status </th>
+                          <th> Payment Status </th>
+
+                        </tr>
+                      </thead>
+                      <tbody>
+
+                        {% for order_product in order_products %}
+                        <tr>
+                            <td><img src="{{order_product.product.images.url}}" width="50rem"/></td>
+                            <td>#{{order_product.order.order_number}}</td>
+                          <td>{{order_product.product}}</td>
+                          <td>{{order_product.quantity}}</td>
+                          <td>{{order_product.product_price}}</td>
+                          <td>
+                            {{order_product.created_at}}
+                          </td>
+                          <td>
+                            {{order_product.order.status}}
+                          </td>
+                          <td>
+                            {{order_product.order.payment.status}}
+                          </td>
+
+                        {% endfor %}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+             </div>
+          </div>
+
+{% endblock content %}
