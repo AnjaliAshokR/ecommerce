@@ -106,7 +106,7 @@ def sign_in(request):
                 return redirect("otp_check")  # reroute path not created
         except:
             messages.error(request, "User not registered")
-            return redirect("otp_register")
+            return redirect("register")
     return render(request, "stylaza/otp.html", {})
 
 
