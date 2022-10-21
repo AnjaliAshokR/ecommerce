@@ -85,6 +85,10 @@ def confirm_signup(request):
             )
             usr.phone_number = phone_number
             usr.is_active = True
+            profile = UserProfile()
+            profile.user_id = usr.id
+            profile.profile_picture = "default/avatar.png"
+            profile.save()
             usr.save()
             messages.success(request, "User have been successfully registered")
             return redirect("otp_user_login")  # redirect to login page
