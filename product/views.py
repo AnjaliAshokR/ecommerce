@@ -212,10 +212,18 @@ def cart(request, total=0, quantity=0, cart_items=None, reduction=0):
 
             quantity += cart_item.quantity
         tax = (2 * total) / 100
-        if reduction >= total or reduction == 0:
+        if reduction == 0:
             grand_total = total + tax
+
+        elif reduction >= (total/2):
+            grand_total = total + tax
+            coupon = "No Coupon"
+            messages.error(request, "Coupon cannot be applied since it exceeds limit")
+
         else:
             grand_total = total + tax - reduction
+            messages.success(request, "coupon applied successfully")
+
 
     except ObjectDoesNotExist:
         pass
@@ -253,7 +261,6 @@ def coupon_apply(request):
                     except:
 
                         request.session["coupon_code"] = coupon_code
-                        messages.success(request, "coupon applied successfully")
                         return redirect("cart")
             else:
                 pass

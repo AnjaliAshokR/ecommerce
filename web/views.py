@@ -368,7 +368,15 @@ def checkout(request, total=0, quantity=0, cart_items=None):
 
                 quantity += cart_item.quantity
             tax = (2 * total) / 100
-            grand_total = total + tax - reduction
+            if reduction == 0:
+                grand_total = total + tax
+            elif reduction >= (total/2):
+                grand_total = total + tax
+                coupon = "No Coupon"
+                messages.error(request, "Coupon cannot be applied since it exceeds limit")
+
+            else:
+                grand_total = total + tax - reduction
         except ObjectDoesNotExist:
             pass
 
@@ -414,7 +422,15 @@ def place_order(request, total=0, quantity=0, reduction=0):
 
             quantity += cart_item.quantity
         tax = (2 * total) / 100
-        grand_total = round(total + tax - reduction)
+        if reduction == 0:
+            grand_total = total + tax
+        elif reduction >= (total/2):
+            grand_total = total + tax
+            coupon = "No Coupon"
+            messages.error(request, "Coupon cannot be applied since it exceeds limit")
+
+        else:
+            grand_total = total + tax - reduction
 
         if request.method == "POST":
             form = OrderForm(request.POST)
